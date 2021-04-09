@@ -23,17 +23,68 @@ constructor     - should require the student name, studentNumber and grade (in t
 """
 
 class student:
-
+    
     # properties should be listed first
+    name = ""
+    studentNumber = ""
+    grade = 0
+    courses = []
+    grades = []
 
-    def __init__(): # You will need to create your own input parameters for all methods
-        pass
+    def __init__(self, name, studentNumber, grade, courses = [], grades = []): # You will need to create your own input parameters for all methods
+        self.name = name
+        self.studentNumber = studentNumber
+        self.grade = grade
+        self.courses = courses
+        self.grades = grades
 
-    def __del__():
-        pass
+    def getHonorRoll(self):
+        a = self.grades
+
+        a.sort()
+        honornumber = a[-1] + a[-2] + a[-3] + a[-4] + a[-5]
+        honornumber = honornumber / 5
+        honornumber = int(honornumber)
+        if honornumber >= 86:
+            return True
+
+        else: 
+            return False
+
+    def showCourses(self):
+        lis = self.courses
+        answer = print(lis)
+        return answer
+
+    def showGrade(self, ind):
+
+        c1=self.courses
+        course=c1[ind]
+        grades=self.grades
+        gr2=grades[ind]
+        answer=print(self.name + ' has a '+ str(gr2) + '%'+' in ' + str(course)+'.')
+        return answer
+
+    def getCourses(self, lis1):
+        self.courses = lis1
+
+    def getGrades(self, lis2):
+
+        self.grades=lis2
 
     def average(self):
-        pass
+        a = self.grades
+        b = len(a)
+        c=0
+        for i in range(0,b):
+            d=a[i]
+            c=c+d
+        c=c/b
+        return c
+
+    def __del__(self):
+        print("Exiting the service")
+
 
 def main():
     # This contains test data that will be used by the autograder.
@@ -47,7 +98,5 @@ def main():
     st2.getCourses( ["English","Math","Physics","Computers","Geography","Chemistry","French"] )
     st2.getGrades( [71, 98, 93, 95, 68, 81, 71])
 
-
-
-
+    
 main()
